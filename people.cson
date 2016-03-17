@@ -2,12 +2,12 @@
   {
     name: 'Dr. Brown'
     signal: 3606
-    minAmplitude: 60000
+    minAmplitude: 200000
   },
   {
     name: 'Dr. Evil'
     signal: 3620
-    minAmplitude: 60000
+    minAmplitude: 200000
   },
   {
     name: 'Dr. Who'
