@@ -11,10 +11,12 @@ class Person extends EventEmitter
   emitEnter: =>
     @state = 'in'
     @emit 'enter', @toJSON()
+    @emit 'change', @toJSON()
 
   emitExit: =>
     @state = 'out'
     @emit 'exit', @toJSON()
+    @emit 'change', @toJSON()
 
   toJSON: => {@name, @signal, @minAmplitude, @state}
 

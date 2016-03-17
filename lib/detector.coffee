@@ -12,8 +12,8 @@ class Detector extends EventEmitter
     @fft = new FFT @bufferSize, 44100
 
     _.each @people, (person) =>
-      person.on 'enter', (data) => @emit 'enter', data
-      person.on 'exit', (data) => @emit 'exit', data
+      person.on 'change', (data) =>
+        @emit 'change', data
 
   detect: =>
     mic.startCapture()
@@ -37,19 +37,5 @@ class Detector extends EventEmitter
 
   toJSON: =>
     _.map @people, (person) => person.toJSON()
-  #   @displayDrBrownIn @fft.spectrum
-  #   @displayDrWhoIn @fft.spectrum
-  #
-  # displayDrBrownIn: (spectrum) =>
-  #   if @fft.spectrum[3640] > 235812
-  #     console.log "Dr. Brown is in"
-  #   else
-  #     console.log "Dr. Brown is out"
-  #
-  # displayDrWhoIn: (spectrum) =>
-  #   if @fft.spectrum[4086] > 2100000
-  #     console.log "Dr. Who is in"
-  #   else
-  #     console.log "Dr. Who is out"
 
 module.exports = Detector

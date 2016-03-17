@@ -9,10 +9,7 @@ class Command
 
   run: =>
     @detector = new Detector people: PEOPLE_JSON
-
-    @detector.on 'enter', @printState
-    @detector.on 'exit', @printState
-
+    @detector.on 'change', @printState
     @detector.detect()
 
   printState: =>
