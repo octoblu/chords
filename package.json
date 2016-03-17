@@ -11,6 +11,8 @@
   "license": "MIT",
   "dependencies": {
     "@octoblu/microphone": "^1.0.8",
-    "coffee-script": "^1.10.0"
+    "coffee-script": "^1.10.0",
+    "fft": "^0.2.1",
+    "lodash": "^4.6.1"
   }
 }

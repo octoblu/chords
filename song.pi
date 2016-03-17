@@ -1,0 +1,9 @@
+live_loop :doctor_doctor do
+  # Dr. Brown
+  play(:a12, attack: 0, sustain: 2, release: 0)
+  sleep 4
+  # Dr. Who
+  play(:a4, attack: 0, sustain: 2, release: 0)
+  sleep 4
+end
+
