@@ -1,0 +1,12 @@
+[
+  {
+    name: 'Dr. Brown'
+    signal: 3640
+    minAmplitude: 235812
+  },
+  {
+    name: 'Dr. Who'
+    signal: 4086
+    minAmplitude: 2100000
+  }
+]
