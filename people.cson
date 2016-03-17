@@ -13,5 +13,15 @@
     name: 'Dr. Who'
     signal: 3608
     minAmplitude: 700000
+  },
+  {
+    name: 'Dr. Gonzo'
+    signal: 3654
+    minAmplitude: 60000
+  }
+  {
+    name: 'Dr. Moreau'
+    signal: 3655
+    minAmplitude: 60000
   }
 ]
