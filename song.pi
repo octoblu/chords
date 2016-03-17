@@ -1,9 +1,22 @@
-live_loop :doctor_doctor do
-  # Dr. Brown
-  play(:a12, attack: 0, sustain: 2, release: 0)
-  sleep 4
-  # Dr. Who
-  play(:a4, attack: 0, sustain: 2, release: 0)
-  sleep 4
+def DrBrown
+  play hz_to_midi(21100), attack: 0, sustain: 2, release:0
 end
 
+def DrEvil
+  play hz_to_midi(20500), attack: 0, sustain: 2, release:0
+end
+
+def DrWho
+  play hz_to_midi(21000), attack: 0, sustain: 2, release:0
+end
+
+live_loop :doctor_doctor do
+  DrBrown()
+  sleep 4
+  
+  DrEvil()
+  sleep 4
+
+  DrWho()
+  sleep 4
+end

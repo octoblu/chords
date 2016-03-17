@@ -1,23 +1,17 @@
-cliClear    = require 'cli-clear'
-cson        = require 'cson'
-_           = require 'lodash'
-PEOPLE_JSON = cson.parseCSONFile './people.cson'
-Detector    = require './lib/detector'
+commander    = require 'commander'
+PACKAGE_JSON = require './package.json'
 
 class Command
-  constructor: ->
-
   run: =>
-    @detector = new Detector people: PEOPLE_JSON
-    @detector.on 'change', @printState
-    @detector.detect()
+    commander
+      .version PACKAGE_JSON.version
+      .command 'calibrate', 'Prints the dominant signal'
+      .command 'detect', 'Detect when people enter or exit'
+      .parse process.argv
 
-  printState: =>
-    cliClear()
-
-    _.each @detector.toJSON(), ({name, state}) =>
-      console.log "#{name} is #{state}"
-
+    unless commander.runningCommand
+      commander.outputHelp()
+      process.exit 1
 
 command = new Command
 command.run()

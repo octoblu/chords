@@ -30,6 +30,7 @@ class Detector extends EventEmitter
       @fft.spectrum[i] *= @doMath(i)
 
     @processFrame()
+    @emit 'frame', @fft.spectrum
 
   processFrame: =>
     _.each @people, (person) =>
