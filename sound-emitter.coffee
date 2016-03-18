@@ -11,36 +11,43 @@ class SoundEmitter
     @buffer    = []
     @charBits  = []
     @beganWriting = Date.now()
+    @stopUntil = Date.now()
+
 
   getAudio: (time) =>
     return 0 unless @playing
+    return 0 unless Date.now() > @stopUntil
+
     @writing = (Date.now() - @beganWriting) < @bitperMs
+
     @writeNext() unless @writing
     return Math.sin( time  * @currentHz)
 
   writeNext: =>
-    @beganWriting = Date.now()
+    @currentHz = @zeroHz
     return @nextChar() if _.isEmpty @charBits
-    bit = @charBits.pop()
-    console.log bit
-    if bit == 1
-      @currentHz = @oneHz
-    else
-      @currentHz = @zeroHz
-
+    bit = @charBits.shift()
+    @currentHz = @oneHz if bit == 1
     @beganWriting = Date.now()
 
   nextChar: =>
     @currentHz = @zeroHz
 
-    return if _.isEmpty @buffer
+    if _.isEmpty @buffer
+      console.log "no characters left. shutting down."
+      @playing = false
+      return
+
     nextChar = @buffer.pop()
-    console.log "nextChar is: #{nextChar}"
     @charBits = nextChar.toString(2).split('').map Number
-    console.log @charBits
-    @writeNext()
+    console.log "nextChar is: #{@charBits}"
+    console.log "waiting a bit to play again. #{@bitperMs}"
+
+    @stopUntil = Date.now() + @bitperMs
 
   start: =>
+    return if @bstarted
+    @bstarted = true
     @b.play()
 
   play: =>
@@ -51,6 +58,9 @@ class SoundEmitter
 
 
   write: (str) =>
+    @start()
+    @playing = true
+
     buffer = new Buffer str
     _.each buffer, (byte) =>
       @buffer.push byte

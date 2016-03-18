@@ -1,11 +1,11 @@
 [
   {
-    name: 'Dr. 0'
+    name: 0    
     signal: 3727
     minAmplitude: 100000
   },
   {
-    name: 'Dr. 1'
+    name: 1
     signal: 3690
     minAmplitude: 100000
   }
