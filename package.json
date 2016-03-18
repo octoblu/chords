@@ -10,7 +10,8 @@
   "author": "Octoblu, <serveradmin@octoblu.com> (https://octoblu.com)",
   "license": "MIT",
   "dependencies": {
-    "@octoblu/microphone": "^1.0.8",
+    "@octoblu/microphone": "git+https://github.com/octoblu/node-microphone.git",
+    "baudio": "^2.1.2",
     "cli-clear": "^1.0.4",
     "coffee-script": "^1.10.0",
     "commander": "^2.9.0",
